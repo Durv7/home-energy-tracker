@@ -48,9 +48,9 @@ public class UserService {
     }
 
     public void deleteUser(long id){
-        boolean isUserExists = userRepository.existsById(id);
-        if(isUserExists) userRepository.deleteById(id);
-        else throw new UserNotFoundException("User not found");
+        User user = userRepository.findById(id).orElseThrow(()->new UserNotFoundException("User Not Found"));
+        user.setDeleted(true);
+        userRepository.save(user);
     }
 
 
