@@ -10,6 +10,7 @@ import com.dsk.user_service.repository.UserRepository;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
+import java.time.Instant;
 import java.util.Optional;
 
 @Service
@@ -43,6 +44,7 @@ public class UserService {
                 .orElseThrow(()-> new UserNotFoundException("User Not Found"));
 
         userMapper.updateUser(user , userUpdateDTO);
+        user.setModifiedAt(Instant.now());
         userRepository.save(user);
         return userMapper.toResponse(user);
     }
