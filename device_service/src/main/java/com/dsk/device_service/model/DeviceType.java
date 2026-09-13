@@ -1,0 +1,32 @@
+package com.dsk.device_service.model;
+
+public enum DeviceType {
+    AIR_CONDITIONER,
+    FAN,
+    REFRIGERATOR,
+    WASHING_MACHINE,
+    DRYER,
+    WATER_HEATER,
+    OVEN,
+    STOVE,
+    MICROWAVE,
+    DISHWASHER,
+    TELEVISION,
+    COMPUTER,
+    LAPTOP,
+    WATER_PUMP,
+    IRON,
+    HEATER,
+    AIR_PURIFIER,
+    VACUUM_CLEANER,
+    LIGHT,
+    PRINTER,
+    ROUTER,
+    ELECTRIC_KETTLE,
+    TOASTER,
+    HAIR_DRYER,
+    GAMING_CONSOLE,
+    EV_CHARGER,
+    HOME_THEATER,
+    COFFEE_MAKER
+}
