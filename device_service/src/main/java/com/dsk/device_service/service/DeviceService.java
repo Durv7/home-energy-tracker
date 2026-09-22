@@ -51,4 +51,10 @@ public class DeviceService {
         deviceRepository.save(device);
     }
 
+    public long getUserIdByDeviceId(long deviceId) throws Exception {
+        long userId = deviceRepository.getUserIdByDeviceId(deviceId)
+                .orElseThrow(()->new Exception("User Id not found"));
+
+        return userId;
+    }
 }

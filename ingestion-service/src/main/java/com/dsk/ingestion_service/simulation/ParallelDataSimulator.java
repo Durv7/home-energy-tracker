@@ -25,7 +25,6 @@ import java.util.concurrent.ThreadPoolExecutor;
 public  class ParallelDataSimulator implements CommandLineRunner {
 
     private final ExecutorService executorService;
-    @Value("${simulator.parallelThreadSize}")
     private int parallelThreadSize;
 
     @Value("${simulation.requests-per-interval}")
@@ -36,17 +35,15 @@ public  class ParallelDataSimulator implements CommandLineRunner {
     private final Random random;
     private final RestTemplate restTemplate;
 
-    public ParallelDataSimulator(){
-        this.executorService = Executors.newCachedThreadPool();
+    public ParallelDataSimulator(@Value("${simulator.parallelThreadSize}") int parallelThreadSize){
+        this.parallelThreadSize = parallelThreadSize;
+        this.executorService = Executors.newFixedThreadPool(this.parallelThreadSize);
         this.random = new Random();
         this.restTemplate = new RestTemplate();
     }
 
     @Override
     public void run(String... args) throws Exception {
-        log.info("Parallel Simulator Starterd...");
-
-        ((ThreadPoolExecutor)executorService).setCorePoolSize(parallelThreadSize);
     }
 
 
@@ -58,9 +55,9 @@ public  class ParallelDataSimulator implements CommandLineRunner {
         for(int i=0; i<parallelThreadSize; i++){
             int requestForThread = batchSize + (i < reminder ? 1 : 0);
             executorService.submit(()->{
-                for(int j=0 ; j<requestPerInterval; j++){
+                for(int j=0 ; j<requestForThread; j++){
                     EnergyUsageDTO energyUsageDTO = EnergyUsageDTO.builder()
-                            .deviceId(random.nextInt(1 , 9))
+                            .deviceId(random.nextInt(1 , 201))
                             .energyConsumed(Math.round(random.nextDouble(0.0 , 2.0)*100.0)/100.0)
                             .timeStamp(Instant.now())
                             .build();
