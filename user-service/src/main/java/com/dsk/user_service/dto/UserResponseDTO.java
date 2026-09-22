@@ -13,5 +13,5 @@ public class UserResponseDTO {
     private String fullName;
     private String email;
     private boolean alerting;
-    private Double engergyAltertingThreshold;
+    private Double energyAlertingThreshold;
 }

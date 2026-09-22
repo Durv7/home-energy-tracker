@@ -29,7 +29,7 @@ class DeviceServiceApplicationTests {
             Device device = Device.builder()
                     .name("Device"+i)
                     .location("Location"+i)
-                    .userId(i%10+1)
+                    .userId((i%10)+1)
                     .deviceType(DeviceType.values()[i%DeviceType.values().length])
                     .createdAt(Instant.now())
                     .isDeleted(false)

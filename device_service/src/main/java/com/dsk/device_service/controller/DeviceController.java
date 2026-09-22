@@ -3,6 +3,7 @@ package com.dsk.device_service.controller;
 import com.dsk.device_service.dto.DeviceDTO;
 import com.dsk.device_service.repository.DeviceRepository;
 import com.dsk.device_service.service.DeviceService;
+import org.apache.coyote.Response;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -43,5 +44,11 @@ public class DeviceController {
        deviceService.deleteDevice(id);
 
         return ResponseEntity.noContent().build();
+    }
+
+    @GetMapping("/{deviceId}/user")
+    public ResponseEntity<Long> getUserIdByDeviceId(@PathVariable long deviceId) throws Exception{
+        long userId = deviceService.getUserIdByDeviceId(deviceId);
+        return ResponseEntity.ok(userId);
     }
 }
