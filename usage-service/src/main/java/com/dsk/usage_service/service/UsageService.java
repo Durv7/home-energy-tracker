@@ -66,7 +66,7 @@ public class UsageService {
                 userId = deviceClient.getUserIdByDeviceId(deviceId);
                 log.info("DeviceID: {} :: UserID:{}" , deviceId , userId);
             } catch (Exception e) {
-                log.info("Exception occured while fetching device : {}" , e.getMessage());
+                log.info("Exception occured while fetching device user : {}" , e.getMessage());
                 continue;
             }
             deviceEnergy.setUserId(userId);
