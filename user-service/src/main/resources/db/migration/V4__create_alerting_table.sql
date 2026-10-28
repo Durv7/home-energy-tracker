@@ -3,6 +3,6 @@ CREATE TABLE alerts (
     user_id BIGINT NOT NULL ,
     sent TINYINT(1) NOT NULL DEFAULT 0,
     created_at TIMESTAMP NOT NULL,
-    mail_content VARCHAR(MEDIUMTEXT),
+    mail_content MEDIUMTEXT,
     PRIMARY KEY(id)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
